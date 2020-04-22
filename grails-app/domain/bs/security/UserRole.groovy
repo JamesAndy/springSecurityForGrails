@@ -27,14 +27,14 @@ class UserRole implements Serializable {
 		table 				'BS_USER_ROLE'
 
 		id					column:"UUID",generator: "uuid2", type: "uuid-binary", length: 16
-		issure				column:"ISSURE"         ,comment:"資料狀態"
-		notes				column:"NOTES"          ,comment:"資料註記"
-		dateCreated			column:"DATE_CREATED",	comment:"資料建立時間"
-		manCreated			column:"MAN_CREATED",	comment:"資料建立者"
-		lastUpdated			column:"LAST_UPDATED",	comment:"資料更新人"
-		manLastUpdated		column:"MAN_LAST_UPDATED",comment:"資料更新者"
-		user				column:"BS_USER_ID",comment:"資料更新者"
-		role				column:"BS_ROLE_ID",comment:"資料更新者"
+		issure				column:"ISSURE",			comment:"資料狀態"
+		notes				column:"NOTES",				comment:"資料註記"
+		dateCreated			column:"DATE_CREATED",		comment:"資料建立時間"
+		manCreated			column:"MAN_CREATED",		comment:"資料建立者"
+		lastUpdated			column:"LAST_UPDATED",		comment:"資料更新人"
+		manLastUpdated		column:"MAN_LAST_UPDATED",	comment:"資料更新者"
+		user				column:"BS_USER_ID",		comment:"資料更新者"
+		role				column:"BS_ROLE_ID",		comment:"資料更新者"
 	}
 
 	@Override
@@ -92,6 +92,13 @@ class UserRole implements Serializable {
 	}
 
 	static constraints = {
+		issure				(nullable:false, blank: false)
+		notes				(nullable:true, maxSize: 1000)
+		dateCreated			(nullable:false, blank: false)
+		manCreated			(nullable:false, blank: false, maxSize: 200)
+		lastUpdated			(nullable:true)
+		manLastUpdated		(nullable:true, maxSize: 200)
+
 		user nullable: false
 		role nullable: false, validator: { Role r, UserRole ur ->
 			if (ur.user?.id) {

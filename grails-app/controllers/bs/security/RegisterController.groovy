@@ -65,6 +65,7 @@ class RegisterController {
                             errorColumn[index] = [item?.arguments,item?.defaultMessage]
                         }
                         userRoleI.discard()
+                        println userRoleI.errors.allErrors
                         flash.message = g.message(code: "bs.security.register.false2.label")
                         redirect action: "index"
                         return
