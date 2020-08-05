@@ -10,7 +10,9 @@ class RegisterController {
 
     static allowedMethods = [register: "POST"]
 
-    def index() { }
+    def index() {
+        render view: "/bs/register/index"
+    }
 
     def register() {
         if(!params.password.equals(params.repassword)) {
@@ -75,7 +77,7 @@ class RegisterController {
                     redirect controller: "login", action: "auth"
                 } else {
                     flash.message = g.message(code: "bs.security.register.false1.label")
-                    render view: "index"
+                    redirect action: "index"
                     return
                 }
             } catch (ValidationException e) {

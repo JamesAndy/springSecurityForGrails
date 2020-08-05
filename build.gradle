@@ -75,6 +75,7 @@ dependencies {
     /*mariadb*/
     compile 'org.mariadb.jdbc:mariadb-java-client:2.4.1'
     compile 'org.grails.plugins:spring-security-core:4.0.0'
+    compile 'org.grails.plugins:spring-security-rest:3.0.1'
 }
 
 bootRun {
